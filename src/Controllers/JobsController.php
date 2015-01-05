@@ -39,7 +39,7 @@ class JobsController
         $config = $this->_config;
         $jenkins = '';
 
-        $env = 'testing';
+        $env = 'staging';
         $jenkins = $request->get('requestor');
         $module = $request->get('module');
         $version = $request->get('version');
