@@ -39,29 +39,41 @@ class ThirdParty {
     }
 
     public function getMemberPermissions($username) 
-    {        
-        $url = $this->_permissionsUrl . $username;
-        return json_decode(@file_get_contents($url), true);
-    }
-    
-    public function canMemberGoLive($permissions, $repository) 
     {
-        if (isset($permissions["teams"]) && 
-                isset($permissions["repositories"])) {
-            if (in_array($this->_adminTeamId, $permissions["teams"]) ||
-                    (in_array($repository, $permissions["repositories"]) &&
-                    in_array($this->_pocsTeamId, $permissions["teams"]))) {
-                return true;
-            }            
-        }
-        return false;
+        # @fixme
+        return array('teams' => array(
+            'pablofmorales', 'lvidarte', 'santiagoguinle'
+        ));
+
+        #$url = $this->_permissionsUrl . $username;
+        #return json_decode(@file_get_contents($url), true);
     }
 
-    private function _callToPreDeploy($params = array()) {
-        $url = $this->_preDeployUrl . '?' . http_build_query($params);
-        $response = json_decode(file_get_contents($url));
-        $response->ticket = urldecode($response->ticket); 
-        return $response;
+    public function canMemberGoLive($permissions, $repository) 
+    {
+        # @fixme
+        return true;
+
+        #if (isset($permissions["teams"]) && 
+        #        isset($permissions["repositories"])) {
+        #    if (in_array($this->_adminTeamId, $permissions["teams"]) ||
+        #            (in_array($repository, $permissions["repositories"]) &&
+        #            in_array($this->_pocsTeamId, $permissions["teams"]))) {
+        #        return true;
+        #    }
+        #}
+        #return false;
+    }
+
+    private function _callToPreDeploy($params = array())
+    {
+        # @fixme
+        return (object) array('ticket' => 1234);
+
+        #$url = $this->_preDeployUrl . '?' . http_build_query($params);
+        #$response = json_decode(file_get_contents($url));
+        #$response->ticket = urldecode($response->ticket); 
+        #return $response;
     }
 
 }
