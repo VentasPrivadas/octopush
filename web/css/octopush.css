@@ -112,6 +112,7 @@
     display: block;
     clear:both;
     max-width: 100%;
+    padding-left: 0;
 }
 
 
@@ -225,7 +226,7 @@
   padding:15px;
 }
 
-.container > .panel:last-child{
+.container > .panel{
     margin-left: 1%;
 }
 
