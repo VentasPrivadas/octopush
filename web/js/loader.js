@@ -45,10 +45,10 @@ var queuedJobs = function (selector, jobs, tml){
     var empty = $(selector + " .queued-empty"),
         table = $(selector + " .queued");
 
-    table.children('tbody').html('');
+    table.children('div').html('');
     if( !$.isEmptyObject(jobs) ){
         $.each(jobs, function(){
-            table.children('tbody').append(tml(this));
+            table.children('div').append(tml(this));
         });
 
         empty.hide();
@@ -62,10 +62,10 @@ var inProgressJobs = function (selector, jobs, tml){
     var container = $(selector),
         table = $(selector + " .inprogress");
 
-    table.children('tbody').html('');
+    table.children('div').html('');
     if( !$.isEmptyObject(jobs) ){
         $.each(jobs, function(){
-            table.children('tbody').append(tml(this));
+            table.children('div').append(tml(this));
         });
 
         container.show();
@@ -79,10 +79,11 @@ var deployedJobs = function (selector, jobs, tml){
     var empty = $(selector + " .processed-empty"),
         table = $(selector + " .processed");
 
-    table.children('tbody').html('');
+    table.children('div').html('');
+    
     if( !$.isEmptyObject(jobs) ){
         $.each(jobs, function(){
-            table.children('tbody').append(tml(this));
+            table.children('div').append(tml(this));
         });
 
         empty.hide();
@@ -107,7 +108,6 @@ var getJobs = function (){
         deployedJobs("#prod-processed", jobs.prodDeployed, tml.prodDeployed);
     });
 }
-
 
 $(document).ready(function (){
     $('#resources').load('../templates/job.html');
